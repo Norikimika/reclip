@@ -206,5 +206,7 @@ def download_file(job_id):
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 8899))
-    host = os.environ.get("HOST", "127.0.0.1")
+    # 0.0.0.0 so other devices on the LAN can reach it; set HOST=127.0.0.1 to
+    # keep it loopback-only.
+    host = os.environ.get("HOST", "0.0.0.0")
     app.run(host=host, port=port)
