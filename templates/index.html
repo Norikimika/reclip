@@ -20,7 +20,7 @@
       --fg: #3a3a38;
       --accent: #e85d2a;
       --accent-hover: #d04e1f;
-      --muted: #9c9889;
+      --muted: #716e62;
       --card: #fff;
       --card-border: #e2ded6;
       --success: #2d8a4e;
@@ -42,7 +42,7 @@
       --fg: #e8e6df;
       --accent: #f07a4a;
       --accent-hover: #ff8f5f;
-      --muted: #7d7a70;
+      --muted: #aea5a1;
       --card: #242422;
       --card-border: #35352f;
       --success: #4fb374;
@@ -61,7 +61,7 @@
         --fg: #e8e6df;
         --accent: #f07a4a;
         --accent-hover: #ff8f5f;
-        --muted: #7d7a70;
+        --muted: #aea5a1;
         --card: #242422;
         --card-border: #35352f;
         --success: #4fb374;
@@ -73,6 +73,18 @@
         --accent-tint: 240, 122, 74;
       }
     }
+
+    /* Every control below is a button or chip with no :focus rule, so Chrome
+       paints its default blue focus ring on all of them. focus-visible keeps
+       the ring for keyboard users and drops it for pointer clicks, which is
+       the visual complaint. Never use outline:none, that removes it for
+       keyboard navigation too. */
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    button:focus:not(:focus-visible) { outline: none; }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
