@@ -86,6 +86,11 @@
 
     button:focus:not(:focus-visible) { outline: none; }
 
+    /* Android/Brave paints a translucent blue-grey rectangle on every tap.
+       That is the flash lo sees when pressing a control, not a focus ring.
+       Transparent here; the real feedback is the :active styles below. */
+    * { -webkit-tap-highlight-color: transparent; }
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
@@ -132,6 +137,7 @@
       transition: color 0.2s, border-color 0.2s;
     }
     .theme-toggle:hover { color: var(--fg); border-color: var(--fg); }
+    .theme-toggle:active { background: var(--card-border); color: var(--fg); }
     .theme-toggle svg { width: 18px; height: 18px; }
     .theme-toggle .icon-dark { display: none; }
     :root[data-theme='dark'] .theme-toggle .icon-light { display: none; }
@@ -208,6 +214,7 @@
     }
     .pill.active { background: var(--fg); color: var(--bg); }
     .pill:not(.active):hover { color: var(--fg); }
+    .pill:active { transform: scale(0.96); }
 
     .fetch-btn {
       flex: 1;
@@ -226,6 +233,9 @@
     }
     .fetch-btn:hover { background: var(--accent-hover); }
     .fetch-btn:active { transform: scale(0.98); }
+
+    /* Press-in feedback: scale rather than a colour wash. A translucent fill
+       measured 1.1:1 against the surface, which is invisible in practice. */
     .fetch-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 
     /* Cards */
@@ -345,6 +355,7 @@
       text-transform: uppercase;
     }
     .card-dl-btn:hover { background: var(--fg); }
+    .card-dl-btn:active { transform: scale(0.97); }
     .card-dl-btn:disabled { opacity: 0.4; cursor: not-allowed; }
     .card-dl-btn.done { background: var(--success); color: var(--fg-on-accent); }
     .card-dl-btn.error { background: var(--error); color: var(--fg-on-accent); }
@@ -374,6 +385,7 @@
       background: rgba(var(--fg-tint), 0.04);
     }
     .q-chip:hover:not(.active) { border-color: var(--muted); }
+    .q-chip:active { transform: scale(0.95); }
 
     /* Error card */
     .card.card-error {
@@ -428,6 +440,7 @@
       text-transform: uppercase;
     }
     .dl-all-btn:hover { background: var(--fg); }
+    .dl-all-btn:active { transform: scale(0.98); }
     .dl-all-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
     .spin {
